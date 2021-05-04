@@ -1,15 +1,14 @@
-# relevant packages installed
-# pip install pandas Faker sqlalchemy
-import pandas as pd
-from faker import Faker
+import pandas as pd # pip install pandas
+from faker import Faker # pip install Faker
 from collections import defaultdict
-import random
+# import random
 
+
+# first initialize our Faker instance that we’ll be using to get our dummy data
 fake = Faker()
 # input a number & file name
-xRows = int(input("Enter number or rows: "))
-xName = (input("Please enter table name: ") )
-# first initialize our Faker instance that we’ll be using to get our dummy data
+xRows = int(input("Enter number of rows: "))
+xName = (input("Please enter table name: "))
 
 #fake = Faker(["fr_FR", "it_IT", "de_DE", "el_GR"])
 # we’ll use fake_data to create our dictionary. defaultdict(list) will create a dictionary that will create key-value pairs that are not currently stored within the dictionary when accessed. Essentially, you do not need to define any keys within your dictionary
@@ -23,7 +22,6 @@ for i in range(xRows):
     fake_data["dob"].append( fake.date_of_birth() )
     fake_data["country"].append( fake.country() )
     fake_data["city"].append( fake.city() )
-
 
 # Now, since we have all our random data within our dictionary fake_data. We need to package this data into our pandas dataframe
 df_fake_data = pd.DataFrame(fake_data)
